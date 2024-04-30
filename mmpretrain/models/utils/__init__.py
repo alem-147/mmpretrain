@@ -30,7 +30,7 @@ from .sparse_modules import (SparseAvgPooling, SparseBatchNorm2d, SparseConv2d,
                              SparseSyncBatchNorm2d)
 from .swiglu_ffn import SwiGLUFFN, SwiGLUFFNFused
 from .vector_quantizer import NormEMAVectorQuantizer
-
+from .vmamba_util import VSSBlock, SS2D
 __all__ = [
     'channel_shuffle',
     'make_divisible',
@@ -88,6 +88,8 @@ __all__ = [
     'SparseBatchNorm2d',
     'SparseLayerNorm2D',
     'SparseSyncBatchNorm2d',
+    'VSSBlock',
+    'SS2D'
 ]
 
 if WITH_MULTIMODAL:

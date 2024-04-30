@@ -42,6 +42,7 @@ from .seresnet import SEResNet
 from .seresnext import SEResNeXt
 from .shufflenet_v1 import ShuffleNetV1
 from .shufflenet_v2 import ShuffleNetV2
+from .snakeswin import SnakeSwin
 from .sparse_convnext import SparseConvNeXt
 from .sparse_resnet import SparseResNet
 from .swin_transformer import SwinTransformer
@@ -73,6 +74,7 @@ __all__ = [
     'SEResNeXt',
     'ShuffleNetV1',
     'ShuffleNetV2',
+    'SnakeSwin',
     'MobileNetV2',
     'MobileNetV3',
     'VisionTransformer',

@@ -14,11 +14,25 @@ Here is the full usage of the script:
 python tools/train.py ${CONFIG_FILE} [ARGS]
 ```
 
+```shell
+python tools/train.py configs/swin_transformer/swin-tiny_16xb64_in1k_short.py --work-dir=./runs/testing
+python tools/train.py configs/snakeswin/snakeswin-tiny_16xb64_in1k.py --work-dir=./runs/snake_swin
+python tools/train.py configs/snakeswin/snakeswin-tiny2_16xb64_in1k.py --work-dir=./runs/snake_swin2
+
+python tools/test.py configs/swin_transformer/swin-tiny_16xb64_in1k_short.py runs/testing/epoch_75.pth
+
+```
+
 ````{note}
 By default, MMPretrain prefers GPU to CPU. If you want to train a model on CPU, please empty `CUDA_VISIBLE_DEVICES` or set it to -1 to make GPU invisible to the program.
 
 ```bash
 CUDA_VISIBLE_DEVICES=-1 python tools/train.py ${CONFIG_FILE} [ARGS]
+```
+
+```bash
+CUDA_VISIBLE_DEVICES=-1 python tools/train.py configs/snakeswin/snakeswin-tiny_16xb64_in1k.py --work-dir=./runs/snake_swin_testing
+
 ```
 ````
 

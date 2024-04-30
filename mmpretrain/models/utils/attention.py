@@ -53,7 +53,6 @@ if digit_version(torch.__version__) >= digit_version('2.0.0'):
 else:
     scaled_dot_product_attention = scaled_dot_product_attention_pyimpl
 
-
 class WindowMSA(BaseModule):
     """Window based multi-head self-attention (W-MSA) module with relative
     position bias.
@@ -119,6 +118,7 @@ class WindowMSA(BaseModule):
         Args:
 
             x (tensor): input features with shape of (num_windows*B, N, C)
+                N=window_size^2
             mask (tensor, Optional): mask with shape of (num_windows, Wh*Ww,
                 Wh*Ww), value should be between (-inf, 0].
         """
@@ -161,7 +161,6 @@ class WindowMSA(BaseModule):
         seq1 = torch.arange(0, step1 * len1, step1)
         seq2 = torch.arange(0, step2 * len2, step2)
         return (seq1[:, None] + seq2[None, :]).reshape(1, -1)
-
 
 class WindowMSAV2(BaseModule):
     """Window based multi-head self-attention (W-MSA) module with relative
@@ -452,9 +451,7 @@ class ShiftWindowMSA(BaseModule):
             x = x[:, :H, :W, :].contiguous()
 
         x = x.view(B, H * W, C)
-
         x = self.drop(x)
-
         return x
 
     @staticmethod
@@ -500,7 +497,6 @@ class ShiftWindowMSA(BaseModule):
         else:
             attn_mask = None
         return attn_mask
-
 
 class MultiheadAttention(BaseModule):
     """Multi-head Attention Module.
